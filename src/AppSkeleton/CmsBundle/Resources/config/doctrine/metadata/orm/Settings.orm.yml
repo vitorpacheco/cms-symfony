@@ -1,0 +1,43 @@
+Settings:
+    type: entity
+    table: settings
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        key:
+            type: string
+            length: 80
+            fixed: false
+            nullable: false
+        value:
+            type: text
+            nullable: false
+        title:
+            type: string
+            length: 200
+            fixed: false
+            nullable: false
+        description:
+            type: text
+            nullable: true
+        inputType:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: input_type
+        editable:
+            type: boolean
+            nullable: false
+        params:
+            type: text
+            nullable: true
+        updated:
+            type: datetime
+            nullable: false
+    lifecycleCallbacks: {  }

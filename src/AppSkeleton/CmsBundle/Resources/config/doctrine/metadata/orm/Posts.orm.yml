@@ -1,0 +1,82 @@
+Posts:
+    type: entity
+    table: posts
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        title:
+            type: string
+            length: 80
+            fixed: false
+            nullable: false
+        slug:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        content:
+            type: text
+            nullable: false
+        lft:
+            type: integer
+            unsigned: true
+            nullable: true
+        rght:
+            type: integer
+            unsigned: true
+            nullable: true
+        promote:
+            type: boolean
+            nullable: true
+        published:
+            type: boolean
+            nullable: true
+        statusComments:
+            type: boolean
+            nullable: false
+            column: status_comments
+        commentCount:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: comment_count
+        created:
+            type: datetime
+            nullable: false
+        updated:
+            type: datetime
+            nullable: false
+    manyToOne:
+        author:
+            targetEntity: Users
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                author_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        parent:
+            targetEntity: Posts
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        type:
+            targetEntity: Types
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                type_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

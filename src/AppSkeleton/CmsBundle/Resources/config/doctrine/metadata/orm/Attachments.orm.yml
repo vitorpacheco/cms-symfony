@@ -1,0 +1,49 @@
+Attachments:
+    type: entity
+    table: attachments
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        model:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        foreignKey:
+            type: integer
+            unsigned: true
+            nullable: false
+            column: foreign_key
+        name:
+            type: string
+            length: 40
+            fixed: false
+            nullable: true
+        attachment:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        dir:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        type:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        size:
+            type: integer
+            unsigned: false
+            nullable: true
+        active:
+            type: boolean
+            nullable: false
+    lifecycleCallbacks: {  }

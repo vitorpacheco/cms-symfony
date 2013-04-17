@@ -1,0 +1,80 @@
+Comments:
+    type: entity
+    table: comments
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        authorName:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+            column: author_name
+        authorEmail:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: author_email
+        authorUrl:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: author_url
+        authorIp:
+            type: string
+            length: 100
+            fixed: false
+            nullable: true
+            column: author_ip
+        title:
+            type: string
+            length: 40
+            fixed: false
+            nullable: true
+        content:
+            type: text
+            nullable: false
+        status:
+            type: boolean
+            nullable: true
+        lft:
+            type: integer
+            unsigned: true
+            nullable: true
+        rght:
+            type: integer
+            unsigned: true
+            nullable: true
+        created:
+            type: datetime
+            nullable: false
+        updated:
+            type: datetime
+            nullable: false
+    manyToOne:
+        post:
+            targetEntity: Posts
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                post_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        parent:
+            targetEntity: Comments
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

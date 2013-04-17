@@ -1,0 +1,84 @@
+<?php
+
+namespace AppSkeleton\CmsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Users
+ *
+ * @ORM\Table(name="users")
+ * @ORM\Entity
+ */
+class Users
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=30, nullable=false)
+     */
+    private $login;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="full_name", type="string", length=100, nullable=true)
+     */
+    private $fullName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="activation_key", type="string", length=255, nullable=true)
+     */
+    private $activationKey;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
+     */
+    private $created;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime", nullable=false)
+     */
+    private $updated;
+
+    /**
+     * @var \Groups
+     *
+     * @ORM\ManyToOne(targetEntity="Groups")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="group_id", referencedColumnName="id")
+     * })
+     */
+    private $group;
+
+
+}

@@ -1,0 +1,23 @@
+Groups:
+    type: entity
+    table: groups
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+        created:
+            type: datetime
+            nullable: false
+        updated:
+            type: datetime
+            nullable: false
+    lifecycleCallbacks: {  }

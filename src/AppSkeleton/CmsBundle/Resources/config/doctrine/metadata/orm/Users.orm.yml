@@ -1,0 +1,55 @@
+Users:
+    type: entity
+    table: users
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        login:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+        password:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        fullName:
+            type: string
+            length: 100
+            fixed: false
+            nullable: true
+            column: full_name
+        email:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        activationKey:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: activation_key
+        created:
+            type: datetime
+            nullable: false
+        updated:
+            type: datetime
+            nullable: false
+    manyToOne:
+        group:
+            targetEntity: Groups
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                group_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,81 @@
+<?php
+
+namespace AppSkeleton\CmsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Attachments
+ *
+ * @ORM\Table(name="attachments")
+ * @ORM\Entity
+ */
+class Attachments
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="model", type="string", length=50, nullable=false)
+     */
+    private $model;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="foreign_key", type="integer", nullable=false)
+     */
+    private $foreignKey;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=40, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="attachment", type="string", length=255, nullable=false)
+     */
+    private $attachment;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dir", type="string", length=255, nullable=false)
+     */
+    private $dir;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="size", type="integer", nullable=true)
+     */
+    private $size;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=false)
+     */
+    private $active;
+
+
+}

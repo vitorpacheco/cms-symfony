@@ -1,0 +1,63 @@
+Contacts:
+    type: entity
+    table: contacts
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        firstName:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: first_name
+        lastName:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: last_name
+        phone:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true
+        mobile:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true
+        email:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        skype:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+        active:
+            type: boolean
+            nullable: false
+        created:
+            type: datetime
+            nullable: false
+        updated:
+            type: datetime
+            nullable: false
+    manyToOne:
+        owner:
+            targetEntity: Users
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                owner_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

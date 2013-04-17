@@ -1,0 +1,49 @@
+Links:
+    type: entity
+    table: links
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        url:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        image:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        visible:
+            type: boolean
+            nullable: false
+        created:
+            type: datetime
+            nullable: false
+        updated:
+            type: datetime
+            nullable: false
+    manyToOne:
+        owner:
+            targetEntity: Users
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                owner_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
