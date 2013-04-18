@@ -1,53 +1,59 @@
 {% extends '::base.html.twig' %}
 
+{% block breadcrumb %}
+	<li>
+		<a href="#">Links</a>
+	</li>
+{% endblock %}
+
 {% block body -%}
-    <h1>Links list</h1>
+	<h1>Links list</h1>
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Url</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Description</th>
-                <th>Visible</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('links_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.url }}</td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.image }}</td>
-                <td>{{ entity.description }}</td>
-                <td>{{ entity.visible }}</td>
-                <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('links_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('links_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="records_list">
+		<thead>
+		<tr>
+			<th>Id</th>
+			<th>Url</th>
+			<th>Name</th>
+			<th>Image</th>
+			<th>Description</th>
+			<th>Visible</th>
+			<th>Created</th>
+			<th>Updated</th>
+			<th>Actions</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for entity in entities %}
+			<tr>
+				<td><a href="{{ path('links_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+				<td>{{ entity.url }}</td>
+				<td>{{ entity.name }}</td>
+				<td>{{ entity.image }}</td>
+				<td>{{ entity.description }}</td>
+				<td>{{ entity.visible }}</td>
+				<td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>
+					<ul>
+						<li>
+							<a href="{{ path('links_show', { 'id': entity.id }) }}">show</a>
+						</li>
+						<li>
+							<a href="{{ path('links_edit', { 'id': entity.id }) }}">edit</a>
+						</li>
+					</ul>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
 
-        <ul>
-        <li>
-            <a href="{{ path('links_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+	<ul>
+		<li>
+			<a href="{{ path('links_new') }}">
+				Create a new entry
+			</a>
+		</li>
+	</ul>
+{% endblock %}

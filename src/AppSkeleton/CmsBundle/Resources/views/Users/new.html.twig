@@ -1,5 +1,15 @@
 {% extends '::base.html.twig' %}
 
+{% block breadcrumb %}
+	<li>
+		<a href="{{ path('users') }}">Users</a> <span class="divider">/</span>
+	</li>
+	<li>
+		<a href="#">New</a>
+	</li>
+{% endblock %}
+
+
 {% block body -%}
     <h1>Users creation</h1>
 
