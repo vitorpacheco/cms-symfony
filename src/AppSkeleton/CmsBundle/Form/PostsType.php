@@ -14,17 +14,30 @@ class PostsType extends AbstractType
             ->add('title')
             ->add('slug')
             ->add('content')
-            ->add('lft')
-            ->add('rght')
+//            ->add('lft')
+//            ->add('rght')
             ->add('promote')
             ->add('published')
             ->add('statusComments')
             ->add('commentCount')
             ->add('created')
             ->add('updated')
-            ->add('author')
-            ->add('parent')
-            ->add('type')
+            ->add('author', 'entity', array(
+				'class' => 'AppSkeletonCmsBundle:Users',
+				'property' => 'fullName',
+				'empty_value' => 'Choose...'
+			))
+            ->add('parent', 'entity', array(
+				'class' => 'AppSkeletonCmsBundle:Posts',
+				'property' => 'title',
+				'empty_value' => 'Choose...',
+				'required' => false,
+			))
+            ->add('type', 'entity', array(
+				'class' => 'AppSkeletonCmsBundle:Types',
+				'property' => 'name',
+				'empty_value' => 'Choose...'
+			))
         ;
     }
 

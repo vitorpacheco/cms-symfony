@@ -18,7 +18,11 @@ class LinksType extends AbstractType
             ->add('visible')
             ->add('created')
             ->add('updated')
-            ->add('owner')
+            ->add('owner', 'entity', array(
+				'class' => 'AppSkeletonCmsBundle:Users',
+				'property' => 'fullName',
+				'empty_value' => 'Choose...'
+			))
         ;
     }
 

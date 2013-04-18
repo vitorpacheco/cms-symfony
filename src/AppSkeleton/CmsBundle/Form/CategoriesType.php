@@ -13,7 +13,12 @@ class CategoriesType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('parentId')
+            ->add('parentId', 'entity', array(
+				'class' => 'AppSkeletonCmsBundle:Categories',
+				'property' => 'name',
+				'empty_value' => 'Choose...',
+				'required' => false,
+			))
             ->add('created')
             ->add('updated')
         ;

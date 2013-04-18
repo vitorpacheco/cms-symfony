@@ -18,7 +18,10 @@ class UsersType extends AbstractType
             ->add('activationKey')
             ->add('created')
             ->add('updated')
-            ->add('group')
+            ->add('group', 'entity', array(
+				'class' => 'AppSkeletonCmsBundle:Groups',
+				'property' => 'name',
+			))
         ;
     }
 
