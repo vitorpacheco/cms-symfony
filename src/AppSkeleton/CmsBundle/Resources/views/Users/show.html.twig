@@ -2,70 +2,70 @@
 
 {% block breadcrumb %}
 	<li>
-		<a href="{{ path('users') }}">Users</a> <span class="divider">/</span>
+		<a href="{{ path('users') }}">users</a> <span class="divider">/</span>
 	</li>
 	<li>
-		<a href="#">Show</a>
+		<a href="#">show</a> <span class="divider">/</span>
 	</li>
 {% endblock %}
 
 {% block body -%}
-    <h1>Users</h1>
+	<h1>Users</h1>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Login</th>
-                <td>{{ entity.login }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ entity.password }}</td>
-            </tr>
-            <tr>
-                <th>Fullname</th>
-                <td>{{ entity.fullName }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ entity.email }}</td>
-            </tr>
-            <tr>
-                <th>Activationkey</th>
-                <td>{{ entity.activationKey }}</td>
-            </tr>
-            <tr>
-                <th>Created</th>
-                <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Updated</th>
-                <td>{{ entity.updated|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="record_properties">
+		<tbody>
+		<tr>
+			<th>Id</th>
+			<td>{{ entity.id }}</td>
+		</tr>
+		<tr>
+			<th>Login</th>
+			<td>{{ entity.login }}</td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td>{{ entity.password }}</td>
+		</tr>
+		<tr>
+			<th>Fullname</th>
+			<td>{{ entity.fullName }}</td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td>{{ entity.email }}</td>
+		</tr>
+		<tr>
+			<th>Activationkey</th>
+			<td>{{ entity.activationKey }}</td>
+		</tr>
+		<tr>
+			<th>Created</th>
+			<td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+		</tr>
+		<tr>
+			<th>Updated</th>
+			<td>{{ entity.updated|date('Y-m-d H:i:s') }}</td>
+		</tr>
+		</tbody>
+	</table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('users') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('users_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('users_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+	<ul class="record_actions">
+		<li>
+			<a href="{{ path('users') }}">
+				Back to the list
+			</a>
+		</li>
+		<li>
+			<a href="{{ path('users_edit', { 'id': entity.id }) }}">
+				Edit
+			</a>
+		</li>
+		<li>
+			<form action="{{ path('users_delete', { 'id': entity.id }) }}" method="post">
+				<input type="hidden" name="_method" value="DELETE" />
+				{{ form_widget(delete_form) }}
+				<button type="submit">Delete</button>
+			</form>
+		</li>
+	</ul>
 {% endblock %}

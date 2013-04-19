@@ -2,29 +2,29 @@
 
 {% block breadcrumb %}
 	<li>
-		<a href="{{ path('users') }}">Users</a> <span class="divider">/</span>
+		<a href="{{ path('users') }}">users</a> <span class="divider">/</span>
 	</li>
 	<li>
-		<a href="#">New</a>
+		<a href="#">new</a> <span class="divider">/</span>
 	</li>
 {% endblock %}
 
 
 {% block body -%}
-    <h1>Users creation</h1>
+	<h1>Users creation</h1>
 
-    <form action="{{ path('users_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
-        <p>
-            <button type="submit">Create</button>
-        </p>
-    </form>
+	<form action="{{ path('users_create') }}" method="post" {{ form_enctype(form) }}>
+		{{ form_widget(form) }}
+		<p>
+			<button type="submit">Create</button>
+		</p>
+	</form>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('users') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+	<ul class="record_actions">
+		<li>
+			<a href="{{ path('users') }}">
+				Back to the list
+			</a>
+		</li>
+	</ul>
 {% endblock %}

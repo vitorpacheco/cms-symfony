@@ -15,196 +15,188 @@ use AppSkeleton\CmsBundle\Form\LinksType;
  *
  * @Route("/links")
  */
-class LinksController extends Controller
-{
-    /**
-     * Lists all Links entities.
-     *
-     * @Route("/", name="links")
-     * @Method("GET")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+class LinksController extends Controller {
 
-        $entities = $em->getRepository('AppSkeletonCmsBundle:Links')->findAll();
+	/**
+	 * Lists all Links entities.
+	 *
+	 * @Route("/", name="links")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function indexAction() {
+		$em = $this->getDoctrine()->getManager();
 
-        return array(
-            'entities' => $entities,
-        );
-    }
+		$entities = $em->getRepository('AppSkeletonCmsBundle:Links')->findAll();
 
-    /**
-     * Creates a new Links entity.
-     *
-     * @Route("/", name="links_create")
-     * @Method("POST")
-     * @Template("AppSkeletonCmsBundle:Links:new.html.twig")
-     */
-    public function createAction(Request $request)
-    {
-        $entity  = new Links();
-        $form = $this->createForm(new LinksType(), $entity);
-        $form->bind($request);
+		return array(
+			'entities' => $entities,
+		);
+	}
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+	/**
+	 * Creates a new Links entity.
+	 *
+	 * @Route("/", name="links_create")
+	 * @Method("POST")
+	 * @Template("AppSkeletonCmsBundle:Links:new.html.twig")
+	 */
+	public function createAction(Request $request) {
+		$entity  = new Links();
+		$form = $this->createForm(new LinksType(), $entity);
+		$form->bind($request);
 
-            return $this->redirect($this->generateUrl('links_show', array('id' => $entity->getId())));
-        }
+		if ($form->isValid()) {
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($entity);
+			$em->flush();
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
+			return $this->redirect($this->generateUrl('links_show', array('id' => $entity->getId())));
+		}
 
-    /**
-     * Displays a form to create a new Links entity.
-     *
-     * @Route("/new", name="links_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Links();
-        $form   = $this->createForm(new LinksType(), $entity);
+		return array(
+			'entity' => $entity,
+			'form'   => $form->createView(),
+		);
+	}
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
+	/**
+	 * Displays a form to create a new Links entity.
+	 *
+	 * @Route("/new", name="links_new")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function newAction() {
+		$entity = new Links();
+		$form   = $this->createForm(new LinksType(), $entity);
 
-    /**
-     * Finds and displays a Links entity.
-     *
-     * @Route("/{id}", name="links_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return array(
+			'entity' => $entity,
+			'form'   => $form->createView(),
+		);
+	}
 
-        $entity = $em->getRepository('AppSkeletonCmsBundle:Links')->find($id);
+	/**
+	 * Finds and displays a Links entity.
+	 *
+	 * @Route("/{id}", name="links_show")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function showAction($id) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Links entity.');
-        }
+		$entity = $em->getRepository('AppSkeletonCmsBundle:Links')->find($id);
 
-        $deleteForm = $this->createDeleteForm($id);
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Links entity.');
+		}
 
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+		$deleteForm = $this->createDeleteForm($id);
 
-    /**
-     * Displays a form to edit an existing Links entity.
-     *
-     * @Route("/{id}/edit", name="links_edit")
-     * @Method("GET")
-     * @Template()
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return array(
+			'entity'      => $entity,
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-        $entity = $em->getRepository('AppSkeletonCmsBundle:Links')->find($id);
+	/**
+	 * Displays a form to edit an existing Links entity.
+	 *
+	 * @Route("/{id}/edit", name="links_edit")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function editAction($id) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Links entity.');
-        }
+		$entity = $em->getRepository('AppSkeletonCmsBundle:Links')->find($id);
 
-        $editForm = $this->createForm(new LinksType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Links entity.');
+		}
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+		$editForm = $this->createForm(new LinksType(), $entity);
+		$deleteForm = $this->createDeleteForm($id);
 
-    /**
-     * Edits an existing Links entity.
-     *
-     * @Route("/{id}", name="links_update")
-     * @Method("PUT")
-     * @Template("AppSkeletonCmsBundle:Links:edit.html.twig")
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return array(
+			'entity'      => $entity,
+			'edit_form'   => $editForm->createView(),
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-        $entity = $em->getRepository('AppSkeletonCmsBundle:Links')->find($id);
+	/**
+	 * Edits an existing Links entity.
+	 *
+	 * @Route("/{id}", name="links_update")
+	 * @Method("PUT")
+	 * @Template("AppSkeletonCmsBundle:Links:edit.html.twig")
+	 */
+	public function updateAction(Request $request, $id) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Links entity.');
-        }
+		$entity = $em->getRepository('AppSkeletonCmsBundle:Links')->find($id);
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new LinksType(), $entity);
-        $editForm->bind($request);
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Links entity.');
+		}
 
-        if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
+		$deleteForm = $this->createDeleteForm($id);
+		$editForm = $this->createForm(new LinksType(), $entity);
+		$editForm->bind($request);
 
-            return $this->redirect($this->generateUrl('links_edit', array('id' => $id)));
-        }
+		if ($editForm->isValid()) {
+			$em->persist($entity);
+			$em->flush();
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+			return $this->redirect($this->generateUrl('links_edit', array('id' => $id)));
+		}
 
-    /**
-     * Deletes a Links entity.
-     *
-     * @Route("/{id}", name="links_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->bind($request);
+		return array(
+			'entity'      => $entity,
+			'edit_form'   => $editForm->createView(),
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AppSkeletonCmsBundle:Links')->find($id);
+	/**
+	 * Deletes a Links entity.
+	 *
+	 * @Route("/{id}", name="links_delete")
+	 * @Method("DELETE")
+	 */
+	public function deleteAction(Request $request, $id) {
+		$form = $this->createDeleteForm($id);
+		$form->bind($request);
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Links entity.');
-            }
+		if ($form->isValid()) {
+			$em = $this->getDoctrine()->getManager();
+			$entity = $em->getRepository('AppSkeletonCmsBundle:Links')->find($id);
 
-            $em->remove($entity);
-            $em->flush();
-        }
+			if (!$entity) {
+				throw $this->createNotFoundException('Unable to find Links entity.');
+			}
 
-        return $this->redirect($this->generateUrl('links'));
-    }
+			$em->remove($entity);
+			$em->flush();
+		}
 
-    /**
-     * Creates a form to delete a Links entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm()
-        ;
-    }
+		return $this->redirect($this->generateUrl('links'));
+	}
+
+	/**
+	 * Creates a form to delete a Links entity by id.
+	 *
+	 * @param mixed $id The entity id
+	 *
+	 * @return Symfony\Component\Form\Form The form
+	 */
+	private function createDeleteForm($id) {
+		return $this->createFormBuilder(array('id' => $id))
+			->add('id', 'hidden')
+			->getForm()
+			;
+	}
 }
