@@ -42,7 +42,12 @@ class LinksController extends Controller {
 	 * @Template("AppSkeletonCmsBundle:Links:new.html.twig")
 	 */
 	public function createAction(Request $request) {
+		$now = new \DateTime('now');
+
 		$entity  = new Links();
+		$entity->setCreated($now);
+		$entity->setUpdated($now);
+
 		$form = $this->createForm(new LinksType(), $entity);
 		$form->bind($request);
 
@@ -138,6 +143,7 @@ class LinksController extends Controller {
 		$em = $this->getDoctrine()->getManager();
 
 		$entity = $em->getRepository('AppSkeletonCmsBundle:Links')->find($id);
+		$entity->setUpdated(new \Datetime('now'));
 
 		if (!$entity) {
 			throw $this->createNotFoundException('Unable to find Links entity.');

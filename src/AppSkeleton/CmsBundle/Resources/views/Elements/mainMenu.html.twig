@@ -2,33 +2,75 @@
 <div class="span2 main-menu-span">
 	<div class="nav-collapse sidebar-nav">
 		<ul class="nav nav-tabs nav-stacked main-menu">
+
 			<li>
-				<a href="{{ path('dashboard') }}"><i class="fa-icon-home"></i><span class="hidden-tablet"> Dashboard</span></a>
+				<a href="{{ path('dashboard') }}"><i class="fa-icon-home"></i><span class="hidden-tablet"> dashboard</span></a>
 			</li>
+
 			<li>
-				<a href="{{ path('posts') }}"><i class="fa-icon-file"></i><span class="hidden-tablet"> Posts</span></a>
+				<a class="dropmenu" href="#"><i class="fa-icon-file"></i><span class="hidden-tablet"> posts</span></a>
+				<ul>
+					<li><a class="submenu" href="{{ path('posts_new') }}"><i class="icon-plus"></i><span class="hidden-tablet"> add</span></a></li>
+					<li><a class="submenu" href="{{ path('posts') }}"><i class="icon-list-alt"></i><span class="hidden-tablet"> list</span></a></li>
+				</ul>
 			</li>
+
 			<li>
-				<a href="{{ path('categories') }}"><i class="fa-icon-tags"></i><span class="hidden-tablet"> Categories</span></a>
+				<a class="dropmenu" href="#"><i class="fa-icon-tags"></i><span class="hidden-tablet"> categories</span></a>
+				<ul>
+					<li><a class="submenu" href="{{ path('categories_new') }}"><i class="icon-plus"></i><span class="hidden-tablet"> add</span></a></li>
+					<li><a class="submenu" href="{{ path('categories') }}"><i class="icon-list-alt"></i><span class="hidden-tablet"> list</span></a></li>
+				</ul>
 			</li>
+
 			<li>
-				<a href="{{ path('types') }}"><i class="fa-icon-flag"></i><span class="hidden-tablet"> Types</span></a>
+				<a class="dropmenu" href="#"><i class="fa-icon-flag"></i><span class="hidden-tablet"> types</span></a>
+				<ul>
+					<li><a class="submenu" href="{{ path('types_new') }}"><i class="icon-plus"></i><span class="hidden-tablet"> add</span></a></li>
+					<li><a class="submenu" href="{{ path('types') }}"><i class="icon-list-alt"></i><span class="hidden-tablet"> list</span></a></li>
+				</ul>
 			</li>
+
 			<li>
-				<a href="{{ path('links') }}"><i class="fa-icon-link"></i><span class="hidden-tablet"> Links</span></a>
+				<a class="dropmenu" href="#"><i class="fa-icon-link"></i><span class="hidden-tablet"> links</span></a>
+				<ul>
+					<li><a class="submenu" href="{{ path('links_new') }}"><i class="icon-plus"></i><span class="hidden-tablet"> add</span></a></li>
+					<li><a class="submenu" href="{{ path('links') }}"><i class="icon-list-alt"></i><span class="hidden-tablet"> list</span></a></li>
+				</ul>
 			</li>
+
 			<li>
-				<a href="{{ path('attachments') }}"><i class="fa-icon-upload-alt"></i><span class="hidden-tablet"> Attachments</span></a>
+				<a class="dropmenu" href="#"><i class="fa-icon-upload-alt"></i><span class="hidden-tablet"> attachments</span></a>
+				<ul>
+					<li><a class="submenu" href="{{ path('attachments_new') }}"><i class="icon-plus"></i><span class="hidden-tablet"> add</span></a></li>
+					<li><a class="submenu" href="{{ path('attachments') }}"><i class="icon-list-alt"></i><span class="hidden-tablet"> list</span></a></li>
+				</ul>
 			</li>
+
 			<li>
-				<a href="{{ path('contacts') }}"><i class="fa-icon-book"></i><span class="hidden-tablet"> Contacts</span></a>
+				<a class="dropmenu" href="#"><i class="fa-icon-book"></i><span class="hidden-tablet"> contacts</span></a>
+				<ul>
+					<li><a class="submenu" href="{{ path('contacts_new') }}"><i class="icon-plus"></i><span class="hidden-tablet"> add</span></a></li>
+					<li><a class="submenu" href="{{ path('contacts') }}"><i class="icon-list-alt"></i><span class="hidden-tablet"> list</span></a></li>
+				</ul>
 			</li>
+
 			<li>
-				<a href="{{ path('users') }}"><i class="fa-icon-user"></i><span class="hidden-tablet"> Users</span></a>
+				<a class="dropmenu" href="#"><i class="fa-icon-user"></i><span class="hidden-tablet"> users</span></a>
+				<ul>
+					<li><a class="submenu" href="{{ path('users_new') }}"><i class="icon-plus"></i><span class="hidden-tablet"> add</span></a></li>
+					<li><a class="submenu" href="{{ path('users') }}"><i class="icon-list-alt"></i><span class="hidden-tablet"> list</span></a></li>
+				</ul>
 			</li>
+
 			<li>
-				<a href="{{ path('groups') }}"><i class="fa-icon-group icon-white"></i><span class="hidden-tablet"> Groups</span></a>
+				<a class="dropmenu" href="#"><i class="fa-icon-group"></i><span class="hidden-tablet"> groups</span></a>
+				<ul>
+					<li><a class="submenu" href="{{ path('groups_new') }}"><i class="icon-plus"></i><span class="hidden-tablet"> add</span></a></li>
+					<li><a class="submenu" href="{{ path('groups') }}"><i class="icon-list-alt"></i><span class="hidden-tablet"> list</span></a></li>
+				</ul>
 			</li>
+
 		</ul>
 	</div><!--/.well -->
 </div><!--/span-->

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="groups")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Groups {
 	/**
@@ -111,5 +112,21 @@ class Groups {
 	 */
 	public function getUpdated() {
 		return $this->updated;
+	}
+
+	/**
+	 * Updating updated and created date fields.
+	 *
+	 * @ORM\PrePersist
+	 * @ORM\PreUpdate
+	 */
+	public function prePersistUpdateRecord() {
+		$now = new \DateTime('now', new \DateTimeZone('America/Bahia'));
+
+		$this->updated = $now;
+
+		if (!$this->created) {
+			$this->created = $now;
+		}
 	}
 }

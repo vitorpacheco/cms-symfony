@@ -12,8 +12,8 @@ class GroupsType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('created')
-            ->add('updated')
+//            ->add('created')
+//            ->add('updated')
         ;
     }
 

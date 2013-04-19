@@ -24,8 +24,8 @@
 			<tr>
 				<td><a href="{{ path('groups_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
 				<td>{{ entity.name }}</td>
-				<td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-				<td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>{% if entity.created %}{{ entity.created|date('d/m/Y H:i:s') }}{% endif %}</td>
+				<td>{% if entity.updated %}{{ entity.updated|date('d/m/Y H:i:s') }}{% endif %}</td>
 				<td>
 					<ul>
 						<li>

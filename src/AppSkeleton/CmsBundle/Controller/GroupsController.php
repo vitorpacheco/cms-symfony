@@ -15,196 +15,171 @@ use AppSkeleton\CmsBundle\Form\GroupsType;
  *
  * @Route("/groups")
  */
-class GroupsController extends Controller
-{
-    /**
-     * Lists all Groups entities.
-     *
-     * @Route("/", name="groups")
-     * @Method("GET")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+class GroupsController extends Controller {
+	/**
+	 * Lists all Groups entities.
+	 *
+	 * @Route("/", name="groups")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function indexAction() {
+		$em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppSkeletonCmsBundle:Groups')->findAll();
+		$entities = $em->getRepository('AppSkeletonCmsBundle:Groups')->findAll();
 
-        return array(
-            'entities' => $entities,
-        );
-    }
+		return array('entities' => $entities,);
+	}
 
-    /**
-     * Creates a new Groups entity.
-     *
-     * @Route("/", name="groups_create")
-     * @Method("POST")
-     * @Template("AppSkeletonCmsBundle:Groups:new.html.twig")
-     */
-    public function createAction(Request $request)
-    {
-        $entity  = new Groups();
-        $form = $this->createForm(new GroupsType(), $entity);
-        $form->bind($request);
+	/**
+	 * Creates a new Groups entity.
+	 *
+	 * @Route("/", name="groups_create")
+	 * @Method("POST")
+	 * @Template("AppSkeletonCmsBundle:Groups:new.html.twig")
+	 */
+	public function createAction(Request $request) {
+//		$now = new \DateTime('now');
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+		$entity = new Groups();
+//		$entity->setCreated($now);
+//		$entity->setUpdated($now);
 
-            return $this->redirect($this->generateUrl('groups_show', array('id' => $entity->getId())));
-        }
+		$form = $this->createForm(new GroupsType(), $entity);
+		$form->bind($request);
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
+		if ($form->isValid()) {
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($entity);
+			$em->flush();
 
-    /**
-     * Displays a form to create a new Groups entity.
-     *
-     * @Route("/new", name="groups_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Groups();
-        $form   = $this->createForm(new GroupsType(), $entity);
+			return $this->redirect($this->generateUrl('groups_show', array('id' => $entity->getId())));
+		}
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
+		return array('entity' => $entity, 'form' => $form->createView(),);
+	}
 
-    /**
-     * Finds and displays a Groups entity.
-     *
-     * @Route("/{id}", name="groups_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+	/**
+	 * Displays a form to create a new Groups entity.
+	 *
+	 * @Route("/new", name="groups_new")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function newAction() {
+		$entity = new Groups();
+		$form = $this->createForm(new GroupsType(), $entity);
 
-        $entity = $em->getRepository('AppSkeletonCmsBundle:Groups')->find($id);
+		return array('entity' => $entity, 'form' => $form->createView(),);
+	}
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Groups entity.');
-        }
+	/**
+	 * Finds and displays a Groups entity.
+	 *
+	 * @Route("/{id}", name="groups_show")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function showAction($id) {
+		$em = $this->getDoctrine()->getManager();
 
-        $deleteForm = $this->createDeleteForm($id);
+		$entity = $em->getRepository('AppSkeletonCmsBundle:Groups')->find($id);
 
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Groups entity.');
+		}
 
-    /**
-     * Displays a form to edit an existing Groups entity.
-     *
-     * @Route("/{id}/edit", name="groups_edit")
-     * @Method("GET")
-     * @Template()
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		$deleteForm = $this->createDeleteForm($id);
 
-        $entity = $em->getRepository('AppSkeletonCmsBundle:Groups')->find($id);
+		return array('entity' => $entity, 'delete_form' => $deleteForm->createView(),);
+	}
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Groups entity.');
-        }
+	/**
+	 * Displays a form to edit an existing Groups entity.
+	 *
+	 * @Route("/{id}/edit", name="groups_edit")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function editAction($id) {
+		$em = $this->getDoctrine()->getManager();
 
-        $editForm = $this->createForm(new GroupsType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
+		$entity = $em->getRepository('AppSkeletonCmsBundle:Groups')->find($id);
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Groups entity.');
+		}
 
-    /**
-     * Edits an existing Groups entity.
-     *
-     * @Route("/{id}", name="groups_update")
-     * @Method("PUT")
-     * @Template("AppSkeletonCmsBundle:Groups:edit.html.twig")
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		$editForm = $this->createForm(new GroupsType(), $entity);
+		$deleteForm = $this->createDeleteForm($id);
 
-        $entity = $em->getRepository('AppSkeletonCmsBundle:Groups')->find($id);
+		return array('entity' => $entity, 'edit_form' => $editForm->createView(), 'delete_form' => $deleteForm->createView(),);
+	}
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Groups entity.');
-        }
+	/**
+	 * Edits an existing Groups entity.
+	 *
+	 * @Route("/{id}", name="groups_update")
+	 * @Method("PUT")
+	 * @Template("AppSkeletonCmsBundle:Groups:edit.html.twig")
+	 */
+	public function updateAction(Request $request, $id) {
+		$em = $this->getDoctrine()->getManager();
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new GroupsType(), $entity);
-        $editForm->bind($request);
+		$entity = $em->getRepository('AppSkeletonCmsBundle:Groups')->find($id);
+//		$entity->setUpdated(new \Datetime('now'));
 
-        if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Groups entity.');
+		}
 
-            return $this->redirect($this->generateUrl('groups_edit', array('id' => $id)));
-        }
+		$deleteForm = $this->createDeleteForm($id);
+		$editForm = $this->createForm(new GroupsType(), $entity);
+		$editForm->bind($request);
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+		if ($editForm->isValid()) {
+			$em->persist($entity);
+			$em->flush();
 
-    /**
-     * Deletes a Groups entity.
-     *
-     * @Route("/{id}", name="groups_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->bind($request);
+			return $this->redirect($this->generateUrl('groups_edit', array('id' => $id)));
+		}
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AppSkeletonCmsBundle:Groups')->find($id);
+		return array('entity' => $entity, 'edit_form' => $editForm->createView(), 'delete_form' => $deleteForm->createView(),);
+	}
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Groups entity.');
-            }
+	/**
+	 * Deletes a Groups entity.
+	 *
+	 * @Route("/{id}", name="groups_delete")
+	 * @Method("DELETE")
+	 */
+	public function deleteAction(Request $request, $id) {
+		$form = $this->createDeleteForm($id);
+		$form->bind($request);
 
-            $em->remove($entity);
-            $em->flush();
-        }
+		if ($form->isValid()) {
+			$em = $this->getDoctrine()->getManager();
+			$entity = $em->getRepository('AppSkeletonCmsBundle:Groups')->find($id);
 
-        return $this->redirect($this->generateUrl('groups'));
-    }
+			if (!$entity) {
+				throw $this->createNotFoundException('Unable to find Groups entity.');
+			}
 
-    /**
-     * Creates a form to delete a Groups entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm()
-        ;
-    }
+			$em->remove($entity);
+			$em->flush();
+		}
+
+		return $this->redirect($this->generateUrl('groups'));
+	}
+
+	/**
+	 * Creates a form to delete a Groups entity by id.
+	 *
+	 * @param mixed $id The entity id
+	 *
+	 * @return Symfony\Component\Form\Form The form
+	 */
+	private function createDeleteForm($id) {
+		return $this->createFormBuilder(array('id' => $id))->add('id', 'hidden')->getForm();
+	}
 }
