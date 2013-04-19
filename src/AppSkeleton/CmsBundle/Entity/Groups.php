@@ -117,8 +117,8 @@ class Groups {
 	/**
 	 * Updating updated and created date fields.
 	 *
-	 * @ORM\PrePersist
-	 * @ORM\PreUpdate
+	 * @ORM\PrePersist()
+	 * @ORM\PreUpdate()
 	 */
 	public function prePersistUpdateRecord() {
 		$now = new \DateTime('now', new \DateTimeZone('America/Bahia'));

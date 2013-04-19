@@ -4,52 +4,49 @@ namespace AppSkeleton\CmsBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class TypesControllerTest extends WebTestCase
-{
-    /*
-    public function testCompleteScenario()
-    {
-        // Create a new client to browse the application
-        $client = static::createClient();
+class TypesControllerTest extends WebTestCase {
 
-        // Create a new entry in the database
-        $crawler = $client->request('GET', '/types/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /types/");
-        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
+	public function testCompleteScenario() {
+		// Create a new client to browse the application
+		$client = static::createClient();
 
-        // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
-            'appskeleton_cmsbundle_typestype[field_name]'  => 'Test',
-            // ... other fields to fill
-        ));
+		// Create a new entry in the database
+		$crawler = $client->request('GET', '/types/');
+		$this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /types/");
+		$crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
-        $client->submit($form);
-        $crawler = $client->followRedirect();
+		// Fill in the form and submit it
+		$form = $crawler->selectButton('Create')->form(array(
+			'appskeleton_cmsbundle_typestype[field_name]'  => 'Test',
+			// ... other fields to fill
+		));
 
-        // Check data in the show view
-        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
+		$client->submit($form);
+		$crawler = $client->followRedirect();
 
-        // Edit the entity
-        $crawler = $client->click($crawler->selectLink('Edit')->link());
+		// Check data in the show view
+		$this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
 
-        $form = $crawler->selectButton('Edit')->form(array(
-            'appskeleton_cmsbundle_typestype[field_name]'  => 'Foo',
-            // ... other fields to fill
-        ));
+		// Edit the entity
+		$crawler = $client->click($crawler->selectLink('Edit')->link());
 
-        $client->submit($form);
-        $crawler = $client->followRedirect();
+		$form = $crawler->selectButton('Edit')->form(array(
+			'appskeleton_cmsbundle_typestype[field_name]'  => 'Foo',
+			// ... other fields to fill
+		));
 
-        // Check the element contains an attribute with value equals "Foo"
-        $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
+		$client->submit($form);
+		$crawler = $client->followRedirect();
 
-        // Delete the entity
-        $client->submit($crawler->selectButton('Delete')->form());
-        $crawler = $client->followRedirect();
+		// Check the element contains an attribute with value equals "Foo"
+		$this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
 
-        // Check the entity has been delete on the list
-        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
-    }
+		// Delete the entity
+		$client->submit($crawler->selectButton('Delete')->form());
+		$crawler = $client->followRedirect();
 
-    */
+		// Check the entity has been delete on the list
+		$this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
+	}
+
 }
