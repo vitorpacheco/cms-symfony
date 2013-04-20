@@ -3,13 +3,13 @@
 namespace AppSkeleton\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Groups
  *
  * @ORM\Table(name="groups")
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  */
 class Groups {
 	/**
@@ -32,6 +32,7 @@ class Groups {
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="created", type="datetime", nullable=false)
+	 * @Gedmo\Timestampable(on="create")
 	 */
 	private $created;
 
@@ -39,6 +40,7 @@ class Groups {
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="updated", type="datetime", nullable=false)
+	 * @Gedmo\Timestampable(on="update")
 	 */
 	private $updated;
 
@@ -114,19 +116,4 @@ class Groups {
 		return $this->updated;
 	}
 
-	/**
-	 * Updating updated and created date fields.
-	 *
-	 * @ORM\PrePersist
-	 * @ORM\PreUpdate
-	 */
-	public function prePersistUpdateRecord() {
-		$now = new \DateTime('now', new \DateTimeZone('America/Bahia'));
-
-		$this->updated = $now;
-
-		if (!$this->created) {
-			$this->created = $now;
-		}
-	}
 }

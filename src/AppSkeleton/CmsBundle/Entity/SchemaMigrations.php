@@ -3,6 +3,7 @@
 namespace AppSkeleton\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * SchemaMigrations
@@ -38,6 +39,7 @@ class SchemaMigrations {
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="created", type="datetime", nullable=true)
+	 * @Gedmo\Timestampable(on="create")
 	 */
 	private $created;
 

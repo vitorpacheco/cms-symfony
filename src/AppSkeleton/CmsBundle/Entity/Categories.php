@@ -3,6 +3,7 @@
 namespace AppSkeleton\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Categories
@@ -45,6 +46,7 @@ class Categories {
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="created", type="datetime", nullable=false)
+	 * @Gedmo\Timestampable(on="create")
 	 */
 	private $created;
 
@@ -52,6 +54,7 @@ class Categories {
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="updated", type="datetime", nullable=false)
+	 * @Gedmo\Timestampable(on="update")
 	 */
 	private $updated;
 

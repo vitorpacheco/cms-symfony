@@ -3,6 +3,7 @@
 namespace AppSkeleton\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Logs
@@ -66,6 +67,7 @@ class Logs {
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="created", type="datetime", nullable=true)
+	 * @Gedmo\Timestampable(on="create")
 	 */
 	private $created;
 
