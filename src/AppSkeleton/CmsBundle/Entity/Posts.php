@@ -3,6 +3,7 @@
 namespace AppSkeleton\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Posts
@@ -31,6 +32,7 @@ class Posts {
 	 * @var string
 	 *
 	 * @ORM\Column(name="slug", type="string", length=50, nullable=false)
+	 * @Gedmo\Slug(fields={"title"}, separator="_")
 	 */
 	private $slug;
 
@@ -87,6 +89,7 @@ class Posts {
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="created", type="datetime", nullable=false)
+	 * @Gedmo\Timestampable(on="create")
 	 */
 	private $created;
 
@@ -94,6 +97,7 @@ class Posts {
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="updated", type="datetime", nullable=false)
+	 * @Gedmo\Timestampable(on="update")
 	 */
 	private $updated;
 

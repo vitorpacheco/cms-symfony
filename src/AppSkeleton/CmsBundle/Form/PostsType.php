@@ -12,16 +12,23 @@ class PostsType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('slug')
-            ->add('content')
+//            ->add('slug')
+            ->add('content', 'textarea', array(
+				'attr' => array(
+					'class' => 'cleditor',
+				)
+			))
 //            ->add('lft')
 //            ->add('rght')
             ->add('promote')
             ->add('published')
-            ->add('statusComments')
-            ->add('commentCount')
-            ->add('created')
-            ->add('updated')
+            ->add('statusComments', 'checkbox', array(
+				'required' => false,
+				'label' => 'Comments',
+			))
+//            ->add('commentCount')
+//            ->add('created')
+//            ->add('updated')
             ->add('author', 'entity', array(
 				'class' => 'AppSkeletonCmsBundle:Users',
 				'property' => 'fullName',

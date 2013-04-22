@@ -17,15 +17,20 @@ Categories:
         description:
             type: text
             nullable: true
-        parentId:
-            type: integer
-            unsigned: false
-            nullable: true
-            column: parent_id
         created:
             type: datetime
             nullable: false
         updated:
             type: datetime
             nullable: false
+    manyToOne:
+        parent:
+            targetEntity: Categories
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'AppSkeletonCmsBundle::base.html.twig' %}
 
 {% block breadcrumb %}
 	<li>
@@ -10,22 +10,85 @@
 {% endblock %}
 
 {% block body -%}
-	<h1>Posts edit</h1>
+	<div class="row-fluid">
 
-	<form action="{{ path('posts_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-		<input type="hidden" name="_method" value="PUT" />
-		{{ form_widget(edit_form) }}
-		<p>
-			<button type="submit">Edit</button>
-		</p>
-	</form>
+		<div class="box span12">
+			<div class="box-header" data-original-title>
+				<h2><i class="icon-edit"></i><span class="break"></span>Post edit</h2>
+			</div>
 
-	<ul class="record_actions">
-		<li>
-			<a href="{{ path('posts') }}">
-				Back to the list
-			</a>
-		</li>
+			<div class="box-content">
+				<form action="{{ path('posts_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="form-horizontal">
+					<input type="hidden" name="_method" value="PUT" />
+
+					<fieldset>
+						<div class="control-group">
+							<label class="control-label" for="{{ edit_form.type.vars.full_name }}">{{ edit_form.type.vars.name|capitalize }}</label>
+							<div class="controls">
+								{{ form_widget(edit_form.type, { 'attr': {'class': 'input-xlarge required'} }) }}
+							</div>
+							<p class="help-block">{{ form_errors(edit_form.type) }}</p>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="{{ edit_form.parent.vars.full_name }}">{{ edit_form.parent.vars.name|capitalize }}</label>
+							<div class="controls">
+								{{ form_widget(edit_form.parent, { 'attr': {'class': 'input-xlarge required'} }) }}
+							</div>
+							<p class="help-block">{{ form_errors(edit_form.parent) }}</p>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="{{ edit_form.title.vars.full_name }}">{{ edit_form.title.vars.name|capitalize }}</label>
+							<div class="controls">
+								{{ form_widget(edit_form.title, { 'attr': {'class': 'input-xlarge required'} }) }}
+							</div>
+							<p class="help-block">{{ form_errors(edit_form.title) }}</p>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="{{ edit_form.content.vars.full_name }}">{{ edit_form.content.vars.name|capitalize }}</label>
+							<div class="controls">
+								{{ form_widget(edit_form.content, { 'attr': { 'class': 'cleditor required' } }) }}
+							</div>
+							<p class="help-block">{{ form_errors(edit_form.content) }}</p>
+						</div>
+
+						<div class="control-group">
+							<div class="controls">
+								<label class="checkbox inline">
+									{{ form_widget(edit_form.promote, { 'attr': {'class': 'required'} }) }}
+									{{ edit_form.promote.vars.name|capitalize }}
+								</label>
+
+								<label class="checkbox inline">
+									{{ form_widget(edit_form.published, { 'attr': {'class': 'required'} }) }}
+									{{ edit_form.published.vars.name|capitalize }}
+								</label>
+
+								<label class="checkbox inline">
+									{{ form_widget(edit_form.statusComments, { 'attr': {'class': 'required'} }) }}
+									{{ edit_form.statusComments.vars.label|capitalize }}
+								</label>
+							</div>
+							<p class="help-block">{{ form_errors(edit_form.promote) }}</p>
+							<p class="help-block">{{ form_errors(edit_form.published) }}</p>
+							<p class="help-block">{{ form_errors(edit_form.statusComments) }}</p>
+						</div>
+
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary">Edit</button>
+							<button type="reset" class="btn">Cancel</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+	<ul>
 		<li>
 			<form action="{{ path('posts_delete', { 'id': entity.id }) }}" method="post">
 				<input type="hidden" name="_method" value="DELETE" />

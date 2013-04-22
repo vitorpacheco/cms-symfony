@@ -3,6 +3,7 @@
 namespace AppSkeleton\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Categories
@@ -35,16 +36,20 @@ class Categories {
 	private $description;
 
 	/**
-	 * @var integer
+	 * @var \Categories
 	 *
-	 * @ORM\Column(name="parent_id", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Categories")
+     * @ORM\JoinColumns({
+	 * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+	 * })
 	 */
-	private $parentId;
+	private $parent;
 
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="created", type="datetime", nullable=false)
+	 * @Gedmo\Timestampable(on="create")
 	 */
 	private $created;
 
@@ -52,6 +57,7 @@ class Categories {
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="updated", type="datetime", nullable=false)
+	 * @Gedmo\Timestampable(on="update")
 	 */
 	private $updated;
 
@@ -107,24 +113,24 @@ class Categories {
 	}
 
 	/**
-	 * Set parentId
+	 * Set parent
 	 *
-	 * @param integer $parentId
+     * @param \AppSkeleton\CmsBundle\Entity\Categories $parent
 	 * @return Categories
 	 */
-	public function setParentId($parentId) {
-		$this->parentId = $parentId;
+	public function setParent(\AppSkeleton\CmsBundle\Entity\Categories $parent = null) {
+		$this->parent = $parent;
 
 		return $this;
 	}
 
 	/**
-	 * Get parentId
+	 * Get parent
 	 *
-	 * @return integer
+	 * @return \AppSkeleton\CmsBundle\Entity\Categories
 	 */
-	public function getParentId() {
-		return $this->parentId;
+	public function getParent() {
+		return $this->parent;
 	}
 
 	/**

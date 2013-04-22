@@ -1,78 +1,74 @@
-{% extends '::base.html.twig' %}
+{% extends 'AppSkeletonCmsBundle::base.html.twig' %}
 
 {% block breadcrumb %}
-	<li>
-		<a href="#">posts</a> <span class="divider">/</span>
-	</li>
+<li>
+    <a href="#">posts</a> <span class="divider">/</span>
+</li>
 {% endblock %}
 
 {% block body -%}
-	<div class="row-fluid sortable">
-		<div class="box span12">
-			<div class="box-header" data-original-title>
-				<h2><i class="icon-user"></i><span class="break"></span>Members</h2>
-				<div class="box-icon">
-					<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
-					<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
-					<a href="#" class="btn-close"><i class="icon-remove"></i></a>
-				</div>
-			</div>
-			<div class="box-content">
-				<table class="records_list table table-striped table-bordered bootstrap-datatable datatable">
-					<thead>
-					<tr>
-						<th>Id</th>
-						<th>Title</th>
-						<th>Promote</th>
-						<th>Published</th>
-						<th>Status Comments</th>
-						<th>Created</th>
-						<th>Updated</th>
-						<th>Actions</th>
-					</tr>
-					</thead>
-					<tbody>
-					{% for entity in entities %}
-						<tr>
-							<td><a href="{{ path('posts_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-							<td>{{ entity.title }}</td>
-							<td class="center">
-								{% if entity.promote %}
-									<span class="label label-success">Active</span>
-								{% else %}
-									<span class="label">Disabled</span>
-								{% endif %}
-							</td>
-							<td class="center">
-								{% if entity.published %}
-									<span class="label label-success">Active</span>
-								{% else %}
-									<span class="label">Disabled</span>
-								{% endif %}
-							</td>
-							<td class="center">
-								{% if entity.statusComments %}
-									<span class="label label-success">Active</span>
-								{% else %}
-									<span class="label">Disabled</span>
-								{% endif %}
-							</td>
-							<td>{% if entity.created %}{{ entity.created|date('d/m/Y H:i:s') }}{% endif %}</td>
-							<td>{% if entity.updated %}{{ entity.updated|date('d/m/Y H:i:s') }}{% endif %}</td>
-							<td class="center">
-								<a class="btn btn-success" href="{{ path('posts_show', { 'id': entity.id }) }}">
-									<i class="icon-zoom-in icon-white"></i>
-								</a>
+<div class="row-fluid">
+    <div class="box span12">
+        <div class="box-header" data-original-title>
+            <h2><i class="icon-user"></i><span class="break"></span>Users</h2>
+        </div>
 
-								<a class="btn btn-info" href="{{ path('posts_edit', { 'id': entity.id }) }}">
-									<i class="icon-edit icon-white"></i>
-								</a>
-							</td>
-						</tr>
+        <div class="box-content">
+            <table class="records_list table table-striped table-bordered bootstrap-datatable datatable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Promote</th>
+                        <th>Published</th>
+                        <th>Status Comments</th>
+                        <th>Created</th>
+                        <th>Updated</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+					{% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('posts_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                            <td>{{ entity.title }}</td>
+                            <td class="center">
+								{% if entity.promote %}
+                                    <span class="label label-success">Active</span>
+								{% else %}
+                                    <span class="label">Disabled</span>
+								{% endif %}
+                            </td>
+                            <td class="center">
+								{% if entity.published %}
+                                    <span class="label label-success">Active</span>
+								{% else %}
+                                    <span class="label">Disabled</span>
+								{% endif %}
+                            </td>
+                            <td class="center">
+								{% if entity.statusComments %}
+                                    <span class="label label-success">Active</span>
+								{% else %}
+                                    <span class="label">Disabled</span>
+								{% endif %}
+                            </td>
+                            <td>{% if entity.created %}{{ entity.created|date('d/m/Y H:i:s') }}{% endif %}</td>
+                            <td>{% if entity.updated %}{{ entity.updated|date('d/m/Y H:i:s') }}{% endif %}</td>
+                            <td class="center">
+                                <a class="btn btn-success" href="{{ path('posts_show', { 'id': entity.id }) }}">
+                                    <i class="icon-zoom-in icon-white"></i>
+                                </a>
+
+                                <a class="btn btn-info" href="{{ path('posts_edit', { 'id': entity.id }) }}">
+                                    <i class="icon-edit icon-white"></i>
+                                </a>
+                            </td>
+                        </tr>
 					{% endfor %}
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-{% endblock %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock body %}
