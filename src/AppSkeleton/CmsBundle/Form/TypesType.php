@@ -13,8 +13,8 @@ class TypesType extends AbstractType
         $builder
             ->add('name')
             ->add('postCount')
-            ->add('created')
-            ->add('updated')
+//            ->add('created')
+//            ->add('updated')
         ;
     }
 

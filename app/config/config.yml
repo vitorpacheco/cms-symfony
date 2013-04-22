@@ -68,7 +68,13 @@ swiftmailer:
     spool:     { type: memory }
 
 stof_doctrine_extensions:
-    default_locale: en_US
+    default_locale: "%locale%"
     orm:
         default:
           timestampable: true
+
+services:
+  gedmo.listener.sluggable:
+    class: Gedmo\Sluggable\SluggableListener
+    tags:
+      - { name: doctrine.event_subscriber, connection: default }

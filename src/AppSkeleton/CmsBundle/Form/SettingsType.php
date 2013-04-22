@@ -18,7 +18,7 @@ class SettingsType extends AbstractType
             ->add('inputType')
             ->add('editable')
             ->add('params')
-            ->add('updated')
+//            ->add('updated')
         ;
     }
 

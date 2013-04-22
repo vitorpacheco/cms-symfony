@@ -18,8 +18,8 @@ class ContactsType extends AbstractType
             ->add('email')
             ->add('skype')
             ->add('active')
-            ->add('created')
-            ->add('updated')
+//            ->add('created')
+//            ->add('updated')
             ->add('owner', 'entity', array(
 				'class' => 'AppSkeletonCmsBundle:Users',
 				'property' => 'fullName',

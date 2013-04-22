@@ -36,11 +36,14 @@ class Categories {
 	private $description;
 
 	/**
-	 * @var integer
+	 * @var \Categories
 	 *
-	 * @ORM\Column(name="parent_id", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Categories")
+     * @ORM\JoinColumns({
+	 * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+	 * })
 	 */
-	private $parentId;
+	private $parent;
 
 	/**
 	 * @var \DateTime
@@ -110,24 +113,24 @@ class Categories {
 	}
 
 	/**
-	 * Set parentId
+	 * Set parent
 	 *
-	 * @param integer $parentId
+     * @param \AppSkeleton\CmsBundle\Entity\Categories $parent
 	 * @return Categories
 	 */
-	public function setParentId($parentId) {
-		$this->parentId = $parentId;
+	public function setParent(\AppSkeleton\CmsBundle\Entity\Categories $parent = null) {
+		$this->parent = $parent;
 
 		return $this;
 	}
 
 	/**
-	 * Get parentId
+	 * Get parent
 	 *
-	 * @return integer
+	 * @return \AppSkeleton\CmsBundle\Entity\Categories
 	 */
-	public function getParentId() {
-		return $this->parentId;
+	public function getParent() {
+		return $this->parent;
 	}
 
 	/**
